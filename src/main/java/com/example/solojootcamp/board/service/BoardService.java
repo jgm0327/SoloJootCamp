@@ -1,10 +1,12 @@
 package com.example.solojootcamp.board.service;
 
 import com.example.solojootcamp.board.repository.BoardRepository;
+import com.example.solojootcamp.board.repository.entity.BoardEntity;
 import com.example.solojootcamp.board.service.dto.Board;
 import com.example.solojootcamp.board.service.dto.UpsertBoard;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,5 +28,13 @@ public class BoardService {
 
     public void addBoard(UpsertBoard board) {
         boardRepository.save(board.toEntity());
+    }
+
+    @Transactional
+    public void modifyBoard(UpsertBoard upsertBoard, long id){
+        BoardEntity board = boardRepository
+                .findById(id).orElseThrow(() -> new IllegalArgumentException("없음"));
+
+        board.update(upsertBoard.getTitle(), upsertBoard.getDescription());
     }
 }
