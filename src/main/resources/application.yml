@@ -1,0 +1,39 @@
+spring:
+  profiles:
+    group:
+      test: profile1
+      dev: profile2
+
+---
+
+spring:
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    url: jdbc:h2:mem:testdb
+
+  config:
+    activate:
+      on-profile: profile1
+
+---
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jootCamp
+    username: jgm
+    password: jgm1234
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  config:
+    activate:
+      on-profile: profile2
