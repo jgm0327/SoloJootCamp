@@ -38,5 +38,11 @@ public class BoardApiController {
         boardService.addBoard(UpsertBoard.from(upsertRequest));
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/{boardId}")
+    public ResponseEntity<Void> modifyBoard(@RequestBody UpsertRequest upsertRequest, @PathVariable("boardId") long id){
+        boardService.modifyBoard(UpsertBoard.from(upsertRequest), id);
+        return ResponseEntity.ok().build();
+    }
 }
 
