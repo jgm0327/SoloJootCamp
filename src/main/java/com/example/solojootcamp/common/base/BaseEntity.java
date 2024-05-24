@@ -23,5 +23,9 @@ public abstract class BaseEntity {
     private String createdBy;
 
     private boolean isDeleted;
+
+    public void setIsDeleted(){
+        this.isDeleted = !this.isDeleted;
+    }
 }
 
