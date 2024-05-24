@@ -1,14 +1,13 @@
 package com.example.solojootcamp.board.controller;
 
 import com.example.solojootcamp.board.controller.dto.BoardResponse;
+import com.example.solojootcamp.board.controller.dto.UpsertRequest;
 import com.example.solojootcamp.board.repository.BoardRepository;
 import com.example.solojootcamp.board.service.BoardService;
+import com.example.solojootcamp.board.service.dto.UpsertBoard;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,4 +33,10 @@ public class BoardApiController {
         return ResponseEntity.ok(board);
     }
 
+    @PostMapping("")
+    public ResponseEntity<Void> addBoard(@RequestBody UpsertRequest upsertRequest){
+        boardService.addBoard(UpsertBoard.from(upsertRequest));
+        return ResponseEntity.ok().build();
+    }
 }
+
