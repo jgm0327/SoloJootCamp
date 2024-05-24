@@ -37,4 +37,10 @@ public class BoardService {
 
         board.update(upsertBoard.getTitle(), upsertBoard.getDescription());
     }
+
+    @Transactional
+    public void deleteBoard(long id){
+        BoardEntity board = boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("없음"));
+        board.setIsDeleted();
+    }
 }
