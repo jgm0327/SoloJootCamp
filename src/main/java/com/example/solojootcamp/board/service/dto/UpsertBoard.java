@@ -13,9 +13,8 @@ public class UpsertBoard {
     private String title;
     private String description;
 
-    private String writer;
     public static UpsertBoard from(UpsertRequest request){
-        return new UpsertBoard(request.getTitle(), request.getDescription(), "임시");
+        return new UpsertBoard(request.getTitle(), request.getDescription());
     }
 
     public BoardEntity toEntity(){
