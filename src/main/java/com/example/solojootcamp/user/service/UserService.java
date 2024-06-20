@@ -13,4 +13,8 @@ public class UserService {
     public void signup(AddUser addUser){
         userRepository.save(addUser.of());
     }
+
+    public void login(){
+
+    }
 }
