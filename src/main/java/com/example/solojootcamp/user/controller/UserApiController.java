@@ -1,5 +1,6 @@
 package com.example.solojootcamp.user.controller;
 
+import com.example.solojootcamp.user.controller.dto.LoginRequest;
 import com.example.solojootcamp.user.controller.dto.SignupRequest;
 import com.example.solojootcamp.user.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,13 @@ public class UserApiController {
 
     @PostMapping("/signup")
     public ResponseEntity<Void> signup(@RequestBody SignupRequest signupRequest){
-        
+
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Void> login(@RequestBody LoginRequest loginRequest){
+
         return ResponseEntity.ok().build();
     }
 }
